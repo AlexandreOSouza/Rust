@@ -6,10 +6,16 @@ use std::fs::File;
 use std::cmp:: Ordering;
 
 
+fn sum(list: &[i32]) -> i32 {
+    let mut sum = 0;
+    for &val in list.iter() {
+        sum += &val
+    }
+    return sum;
+}
+
 fn main() {
 
-    let my_tuple: (u8,String, f64) = (47, "Alexandre".to_string(), 50_000.00);
-
-    println!("Name: {}", my_tuple.1);
-    println!("Age: {}, ", my_tuple.0);
+    let list: Vec<i32> = vec![1, 2, 3, 4, 5];
+        println!("Sum: {}", sum(&list));
 }
