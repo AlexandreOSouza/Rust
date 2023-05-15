@@ -4,18 +4,24 @@ use std::io;
 use std::io::{Write, BufReader, BufRead, ErrorKind};
 use std::fs::File;
 use std::cmp:: Ordering;
+use std::collections::HashMap;
 
-
-fn sum(list: &[i32]) -> i32 {
-    let mut sum = 0;
-    for &val in list.iter() {
-        sum += &val
-    }
-    return sum;
-}
 
 fn main() {
 
-    let list: Vec<i32> = vec![1, 2, 3, 4, 5];
-        println!("Sum: {}", sum(&list));
+    let mut heroes: HashMap<&str, &str> = HashMap::new();
+
+    heroes.insert("Superman", "Clark");
+    heroes.insert("Batman", "Bruce");
+
+    for (k, v) in heroes.iter() {
+        println!("{} = {}", k, v);
+    }
+    if heroes.contains_key(&"Batman") {
+        let the_batman = heroes.get(&"Batman");
+        match the_batman {
+            Some(x) => println!("Batman is a super hero"),
+            None => println!("Batman is not a superhero"),
+        }
+    }
 }
